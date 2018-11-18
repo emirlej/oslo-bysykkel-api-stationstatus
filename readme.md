@@ -21,7 +21,7 @@ string which identifies your application. How to get this is informed in the
 API link above.
 
 ### 3. Credentials json file
-Simply paste your `client-identifier` in the (tmp_credentials.json)[tmp_credentials.json],
+Simply paste your `client-identifier` in the [tmp_credentials.json](tmp_credentials.json),
 and rename the file to `credentials.json`. The script reads the 
 identifier from this file. 
 
