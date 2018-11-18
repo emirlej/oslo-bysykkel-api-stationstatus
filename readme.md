@@ -25,8 +25,7 @@ Simply paste your `client-identifier` in the [tmp_credentials.json](tmp_credenti
 and rename the file to `credentials.json`. The script reads the 
 identifier from this file. 
 
-### 4. Run the script
-Open your preferred terminal and run the script like this:
+### 4. How to use the script
 
 ```shell
 # Get help and info about script and input arguments
