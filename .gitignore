@@ -1,0 +1,9 @@
+# Pycharm and vscode stuff
+.idea/
+.vscode/
+
+# Secret json file
+credentials.json
+
+# Result file(s)
+*.csv

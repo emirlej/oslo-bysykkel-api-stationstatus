@@ -1,0 +1,6 @@
+name: oslo_bysykkel_env
+dependencies:
+  - python=3.6
+  - pandas=0.23.4
+  - simplejson=3.16.0
+  - requests=2.19.1
