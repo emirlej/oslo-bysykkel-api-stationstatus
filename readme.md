@@ -34,4 +34,7 @@ python get_station_info.py -h
 
 # Run with default parameters
 python get_station_info.py
+
+# Run with different number of output rows in the console
+python get_station_info.py --numrows 20
 ```
