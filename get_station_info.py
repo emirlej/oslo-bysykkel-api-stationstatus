@@ -53,34 +53,14 @@ def rename_columns(df):
 
     return(df)
 
-
-# Main function
-
-def main():
-    """ Main flow of the script """
-
-    # Client-Identifier string
-    client_id = read_client_id("credentials.json")
+# Create own function for the fetching part
+def fetch_station_data(client_id, args):
+    """ Get data from Bysykkel API and """
 
     # Base url of the api
     base_url = "https://oslobysykkel.no/api/v1"
     # Name of the output file where the results will be stored
     outfile_name = "station_availability.csv"
-
-    # Setup parser for better cli usage
-    script_description = """
-    Get the status of available locks and bikes at all Oslo byskkel stations.
-    """
-
-    parser = argparse.ArgumentParser(description=script_description)
-
-    # Optional argument
-    parser.add_argument("--numrows",
-                        help="Number of dataframe rows to be printed on the console",
-                        default=5,
-                        type=int)
-
-    args = parser.parse_args()
 
     # Get the data
     try:
@@ -108,8 +88,10 @@ def main():
         station_status_df.to_csv(outfile_name, index=False)
 
         # Print data and info
-        print("\nStation availability at {} stations:\n".format(args.numrows))
-        print(station_status_df.head(args.numrows))
+        if args.numrows > 0:
+            print("\nStation availability at {} stations:\n".format(args.numrows))
+            print(station_status_df.head(args.numrows))
+
         print("\nAll station results written to file: {}\n".format(outfile_name))
 
     # Handle errors
@@ -121,6 +103,38 @@ def main():
     except Exception as exp:
         print(type(exp))
         print(exp)
+
+
+# Main function
+
+def main():
+    """ Main flow of the script """
+
+    # Client-Identifier string
+    client_id = read_client_id("credentials.json")
+
+
+    # Setup parser for better cli usage
+    script_description = """
+    Get the status of available locks and bikes at all Oslo byskkel stations.
+    """
+
+    parser = argparse.ArgumentParser(description=script_description)
+
+    # Optional argument
+    parser.add_argument("--numrows",
+                        help="""
+                        Number of dataframe rows to be printed on the console.
+                        Will not print if not given. 
+                        """,
+                        default=0,
+                        type=int)
+
+    args = parser.parse_args()
+
+    # Get data
+    fetch_station_data(client_id, args)
+
 
 if __name__ == "__main__":
     main()
