@@ -54,7 +54,7 @@ def rename_columns(df):
     return(df)
 
 # Create own function for the fetching part
-def fetch_station_data(client_id, args):
+def fetch_station_data(client_id, numrows):
     """ Get data from Bysykkel API and """
 
     # Base url of the api
@@ -88,9 +88,9 @@ def fetch_station_data(client_id, args):
         station_status_df.to_csv(outfile_name, index=False)
 
         # Print data and info
-        if args.numrows > 0:
-            print("\nStation availability at {} stations:\n".format(args.numrows))
-            print(station_status_df.head(args.numrows))
+        if numrows > 0:
+            print("\nStation availability at {} stations:\n".format(numrows))
+            print(station_status_df.head(numrows))
 
         print("\nAll station results written to file: {}\n".format(outfile_name))
 
@@ -133,7 +133,7 @@ def main():
     args = parser.parse_args()
 
     # Get data
-    fetch_station_data(client_id, args)
+    fetch_station_data(client_id, args.numrows)
 
 
 if __name__ == "__main__":
