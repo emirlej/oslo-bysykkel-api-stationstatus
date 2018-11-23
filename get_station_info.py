@@ -62,6 +62,9 @@ def fetch_station_data(client_id, numrows):
     # Name of the output file where the results will be stored
     outfile_name = "station_availability.csv"
 
+    # Return this if something goes wrong
+    station_status_df = None
+
     # Get the data
     try:
         # Get API data and store into dicts
@@ -104,6 +107,8 @@ def fetch_station_data(client_id, numrows):
         print(type(exp))
         print(exp)
 
+    return(station_status_df)
+
 
 # Main function
 
@@ -132,8 +137,8 @@ def main():
 
     args = parser.parse_args()
 
-    # Get data
-    fetch_station_data(client_id, args.numrows)
+    # Get data, bot do not need the result here
+    _ = fetch_station_data(client_id, args.numrows)
 
 
 if __name__ == "__main__":
