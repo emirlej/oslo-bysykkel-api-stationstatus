@@ -54,8 +54,8 @@ def rename_columns(df):
     return(df)
 
 # Create own function for the fetching part
-def fetch_station_data(client_id, numrows):
-    """ Get data from Bysykkel API and """
+def fetch_station_data(client_id, numrows, write_to_file=True):
+    """ Get data from Bysykkel API """
 
     # Base url of the api
     base_url = "https://oslobysykkel.no/api/v1"
@@ -85,17 +85,19 @@ def fetch_station_data(client_id, numrows):
                                                'available_bikes',
                                                'available_locks']]
 
-        # Sort by name, reset index and write results to file
+        # Sort by name and reset index
         station_status_df.sort_values(by="station_name", ascending=True, inplace=True)
         station_status_df.reset_index(drop=True, inplace=True)
-        station_status_df.to_csv(outfile_name, index=False)
 
         # Print data and info
         if numrows > 0:
             print("\nStation availability at {} stations:\n".format(numrows))
             print(station_status_df.head(numrows))
 
-        print("\nAll station results written to file: {}\n".format(outfile_name))
+        # Write to file by default
+        if write_to_file:
+            station_status_df.to_csv(outfile_name, index=False)
+            print("\nAll station results written to file: {}\n".format(outfile_name))
 
     # Handle errors
     except requests.exceptions.ConnectionError:
