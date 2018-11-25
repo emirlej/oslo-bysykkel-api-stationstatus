@@ -6,8 +6,8 @@ dependencies:
   - requests=2.19.1
   - pytest=4.0.0
   - flask
-    - flask-sqlalchemy
-    - pip
-    - pip:
-      - flask-jsonpify==1.5.0
-      - flask-restful==0.3.6
+  - flask-sqlalchemy
+  - pip
+  - pip:
+    - flask-jsonpify==1.5.0
+    - flask-restful==0.3.6
