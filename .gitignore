@@ -7,3 +7,5 @@ credentials.json
 
 # Result file(s)
 *.csv
+
+__pycache__/
