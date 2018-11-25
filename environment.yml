@@ -9,5 +9,4 @@ dependencies:
   - flask-sqlalchemy
   - pip
   - pip:
-    - flask-jsonpify==1.5.0
     - flask-restful==0.3.6
