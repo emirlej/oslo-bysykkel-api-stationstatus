@@ -37,3 +37,16 @@ python get_station_info.py
 # Run with different number of output rows in the console
 python get_station_info.py --numrows 20
 ```
+
+## Testing with pytest
+Update your environment with the pytest module. Look at the [environment file](environment.yml).
+In order to perform the tests, simply be located in the main folder and enter `pytest` in the terminal.
+  
+
+## Using the REST based application
+1. Update your environment
+2. Run `python server.py` in the terminal.
+3. Go to either a web browser or e.g. [Postman](https://www.getpostman.com/).
+    - Enter `http://127.0.0.1:5002/station_info` to get all station info data
+    - Enter `http://127.0.0.1:5002/station_info?startswith=C` to for example only get
+    station info for stations starting with letter C. 
